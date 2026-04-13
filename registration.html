@@ -551,7 +551,7 @@
                         stroke-linejoin="round" />
                 </svg>
             </button>
-            <div class="card-title">Add Family Details (Optional)</div>
+            <div class="card-title">Add Family Details</div>
             <div class="form-group">
                 <label for="motherDetails">Mother Details</label>
                 <select id="motherDetails" name="motherDetails">
@@ -575,8 +575,8 @@
                 <input type="number" id="numBrothers" name="numBrothers" min="0">
             </div>
             <button class="continue-btn" id="continueBtn11">Continue</button>
-            <button class="continue-btn" id="skipBtn11"
-                style="background:#ccc;color:#333;margin-left:10px;">Skip</button>
+            <!-- <button class="continue-btn" id="skipBtn11"
+                style="background:#ccc;color:#333;margin-left:10px;">Skip</button> -->
         </div>
 
         <!-- Registration Step 11: Family financial status (optional) -->
@@ -735,10 +735,10 @@
             document.getElementById('step11').style.display = 'none';
             document.getElementById('step12').style.display = 'block';
         });
-        document.getElementById('skipBtn11').addEventListener('click', () => {
-            document.getElementById('step11').style.display = 'none';
-            document.getElementById('step12').style.display = 'block';
-        });
+        // document.getElementById('skipBtn11').addEventListener('click', () => {
+        //     document.getElementById('step11').style.display = 'none';
+        //     document.getElementById('step12').style.display = 'block';
+        // });
         // Step 12: Family financial status (optional)
         document.getElementById('backBtn12').addEventListener('click', () => {
             document.getElementById('step12').style.display = 'none';
@@ -793,7 +793,7 @@
             let otp = document.getElementById('aadhaarOtp').value;
 
             if (otp.length !== 6) {
-                alert("Please enter valid OTP");
+                alert("Please enter valid 6 digit OTP");
                 return;
             }
 
