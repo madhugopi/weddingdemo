@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimony Home</title>
+    <link rel="stylesheet" href="styles/account.header.css">
+    <style>
+        .main-content {
+            max-width: 900px;
+            margin: 40px auto 20px auto;
+            padding: 0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .tab {
+            padding: 10px 18px;
+            border: none;
+            background: #f1f5f9;
+            color: #333;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        /* Active tab */
+        .tab.active {
+            background: #1d3557;
+            color: #fff;
+        }
+
+        /* Hover */
+        .tab:hover {
+            background: #457b9d;
+            color: white;
+        }
+
+        /* Card */
+        .search-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .search-card h3 {
+            margin-bottom: 15px;
+            color: #1d3557;
+        }
+
+        /* Row (Profile ID) */
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-row input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        /* Buttons */
+        .go-btn {
+            background: #e63946;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .search-btn {
+            background: #1d3557;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 20px;
+        }
+
+        .form-grid label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-grid select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        /* Range fields */
+        .range {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Footer */
+        .search-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .search-footer a {
+            color: #457b9d;
+            text-decoration: none;
+        }
+
+        .search-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Matrimony</div>
+        <div class="help-text">Need help? Call 8144-99-99-44</div>
+    </header>
+    <nav class="main-menu">
+        <ul class="menu-list">
+            <li class="menu-item" data-link="home.html">Home</li>
+            <li class="menu-item" data-link="matches.html">Matches</li>
+            <li class="menu-item selected" data-link="search.html">Search</li>
+            <li class="menu-item" data-link="inbox.html">Inbox</li>
+        </ul>
+    </nav>
+    </header>
+    <div class="main-content">
+        <div class="tabs">
+            <button id="basic-search-btn" class="tab active">Basic Search</button>
+            <button id="advance-search-btn" class="tab">Advance Search</button>
+        </div>
+        <!-- Card 1: Profile ID Search -->
+        <div class="search-card">
+            <h3>Profile ID Search</h3>
+
+            <div class="form-row" style="width: 50%;">
+                <input type="text" placeholder="Enter Profile ID">
+                <button class="go-btn">GO</button>
+            </div>
+        </div>
+
+        <!-- Card 2: Search Filters -->
+        <div id="basic-search-view" class="search-card">
+            <h3>Basic Search Filters</h3>
+
+            <div class="form-grid">
+
+                <div>
+                    <label>Age</label>
+                    <div class="range">
+                        <select>
+                            <option>From</option>
+                        </select>
+                        <select>
+                            <option>To</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Height</label>
+                    <div class="range">
+                        <select>
+                            <option>From</option>
+                        </select>
+                        <select>
+                            <option>To</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Marital Status</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Religion</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Mother Tongue</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Community</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Country living in</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>State living in</label>
+                    <select></select>
+                </div>
+
+            </div>
+
+            <div class="search-footer">
+                <a id="advance-search-link" style="cursor: pointer;">Advance search option</a>
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+
+        <!-- Card 2: Search Filters Advance-->
+        <div id="advance-search-view" class="search-card" style="display: none;">
+            <h3>Advance Search Filters</h3>
+
+            <div class="form-grid">
+
+                <div>
+                    <label>Age</label>
+                    <div class="range">
+                        <select>
+                            <option>From</option>
+                        </select>
+                        <select>
+                            <option>To</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Height</label>
+                    <div class="range">
+                        <select>
+                            <option>From</option>
+                        </select>
+                        <select>
+                            <option>To</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Marital Status</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Religion</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Mother Tongue</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Community</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Sub Community</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Country living in</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>State living in</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Chavva Dosham</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Family financial status</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Working with</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Job</label>
+                    <select></select>
+                </div>
+
+                <div>
+                    <label>Qalification</label>
+                    <select></select>
+                </div>
+
+            </div>
+            <div class="search-footer">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                window.location.href = this.getAttribute('data-link');
+            });
+        });
+        document.getElementById('basic-search-btn').addEventListener('click', () => {
+            document.getElementById('basic-search-view').style.display = 'block';
+            document.getElementById('advance-search-view').style.display = 'none';
+            document.getElementById('advance-search-btn').classList.remove('active');
+            document.getElementById('basic-search-btn').classList.add('active');
+        });
+        document.getElementById('advance-search-btn').addEventListener('click', () => {
+            document.getElementById('basic-search-view').style.display = 'none';
+            document.getElementById('advance-search-view').style.display = 'block';
+            document.getElementById('basic-search-btn').classList.remove('active');
+            document.getElementById('advance-search-btn').classList.add('active');
+        });
+        document.getElementById('advance-search-link').addEventListener('click', () => {
+            document.getElementById('basic-search-view').style.display = 'none';
+            document.getElementById('advance-search-view').style.display = 'block';
+            document.getElementById('basic-search-btn').classList.remove('active');
+            document.getElementById('advance-search-btn').classList.add('active');
+        });
+    </script>
+</body>
+
+</html>

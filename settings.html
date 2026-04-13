@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimony Home</title>
+    <link rel="stylesheet" href="styles/account.header.css">
+    <style>
+        .main-content {
+            max-width: 900px;
+            margin: 40px auto 20px auto;
+            padding: 0;
+        }
+
+        .welcome {
+            font-size: 2rem;
+            color: #1d3557;
+            margin-top: 40px;
+            font-weight: 600;
+        }
+
+        .accordion {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-body {
+            padding: 15px;
+            display: none;
+            background: #ffffff;
+        }
+
+        .accordion-item.active .accordion-body {
+            display: block;
+        }
+
+        .edit-btn {
+            background: #1d3557;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .verified {
+            color: green;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .contact-visibility label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .contact-visibility input[type="radio"] {
+            accent-color: #1d3557;
+            /* modern browsers */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Matrimony</div>
+        <div class="help-text">Need help? Call 8144-99-99-44</div>
+    </header>
+    <nav class="main-menu">
+        <ul class="menu-list">
+            <li class="menu-item selected" data-link="home.html">Home</li>
+            <li class="menu-item" data-link="matches.html">Matches</li>
+            <li class="menu-item" data-link="search.html">Search</li>
+            <li class="menu-item" data-link="inbox.html">Inbox</li>
+        </ul>
+        <div class="submenu-bar">
+            <ul class="submenu-list">
+                <li class="submenu-item" data-link="home.html">Dashboard</li>
+                <li class="submenu-item" data-link="my_profile.html">My profile</li>
+                <li class="submenu-item" data-link="partner_preferences.html">Partner Preferences</li>
+                <li class="submenu-item selected" data-link="settings.html">Settings</li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+    <div class="main-content">
+
+        <div class="accordion">
+
+            <!-- Item 1 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Account Settings</span>
+                    <button class="edit-btn">Edit</button>
+                </div>
+                <div class="accordion-body">
+                    Update Email Id: <b>mg.gopi03@gmail.com</b>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>My Contact Settings</span>
+                    <button class="edit-btn">Edit</button>
+                </div>
+                <div class="accordion-body">
+                    <div>
+                        Contact number: <b>9898787667</b>
+                        <span class="verified">✔ Verified</span>
+                    </div>
+
+                    <div class="contact-visibility">
+                        <p><b>Contact display status</b></p>
+
+                        <label>
+                            <input type="radio" name="contactVisibility" value="premium" checked>
+                            Only premium members
+                        </label>
+
+                        <label>
+                            <input type="radio" name="contactVisibility" value="all">
+                            Visible to all
+                        </label>
+
+                        <label>
+                            <input type="radio" name="contactVisibility" value="none">
+                            Hide from all
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Astro Details</span>
+                </div>
+                <div class="accordion-body">
+                    <div class="contact-visibility">
+                        <p><b>Astro privacy settings</b></p>
+
+                        <label>
+                            <input type="radio" name="contactVisibility" value="premium" checked>
+                            Only premium members
+                        </label>
+
+                        <label>
+                            <input type="radio" name="contactVisibility" value="all">
+                            Visible to all
+                        </label>
+
+                        <label>
+                            <input type="radio" name="contactVisibility" value="none">
+                            Hide from all
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Profile photo</span>
+                </div>
+                <div class="accordion-body">
+                    <div class="contact-visibility">
+                        <p><b>Profile photo privacy settings</b></p>
+
+                        <label>
+                            <input type="radio" name="contactVisibility" value="premium" checked>
+                            Only premium members
+                        </label>
+
+                        <label>
+                            <input type="radio" name="contactVisibility" value="all">
+                            Visible to all
+                        </label>
+
+                        <label>
+                            <input type="radio" name="contactVisibility" value="none">
+                            Hide from all
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                window.location.href = this.getAttribute('data-link');
+            });
+        });
+        document.querySelectorAll('.submenu-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                window.location.href = this.getAttribute('data-link');
+            });
+        });
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function () {
+                const item = this.parentElement;
+
+                // close others (optional)
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    if (i !== item) i.classList.remove('active');
+                });
+
+                item.classList.toggle('active');
+            });
+        });
+
+        // prevent accordion toggle when clicking edit button
+        document.querySelectorAll('.edit-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                alert("Edit clicked");
+            });
+        });
+    </script>
+</body>
+
+</html>

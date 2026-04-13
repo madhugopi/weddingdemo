@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimony Home</title>
+    <link rel="stylesheet" href="styles/account.header.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .main-content {
+            max-width: 900px;
+            margin: 40px auto 20px auto;
+            padding: 0;
+        }
+        .profile-row {
+            display: flex;
+            background: linear-gradient(120deg, #f8fafc 60%, #e3f2fd 100%);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(25, 118, 210, 0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+            gap: 36px;
+            padding: 40px 32px;
+            margin-bottom: 36px;
+            align-items: center;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 200px;
+            background: linear-gradient(135deg, #e3f2fd 60%, #bbdefb 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(25, 118, 210, 0.10);
+            border: 3px solid #fff;
+            transition: box-shadow 0.2s;
+        }
+        .profile-photo:hover {
+            box-shadow: 0 6px 24px rgba(25, 118, 210, 0.18);
+        }
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-details {
+            flex: 1;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-width: 260px;
+        }
+        .profile-details-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .profile-details-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 1.08rem;
+            color: #1d3557;
+            border-bottom: 1px solid #f0f4f8;
+            padding-bottom: 7px;
+        }
+        .profile-details-item:last-child {
+            border-bottom: none;
+        }
+        .profile-details-label {
+            font-weight: 600;
+            min-width: 140px;
+            color: #e63946;
+            font-size: 0.9rem;
+        }
+        .profile-details-value {
+            font-weight: 500;
+            color: #222;
+            font-size: 0.9rem;
+        }
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            margin-bottom: 24px;
+            padding: 24px 24px 18px 24px;
+            position: relative;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #e63946;
+        }
+        .edit-icon {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            transition: color 0.2s;
+        }
+        .edit-icon:hover {
+            color: #1976d2;
+        }
+        .basics-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+            margin-bottom: 8px;
+        }
+        .basics-item {
+            min-width: 180px;
+        }
+        .basics-label {
+            color: #888;
+            font-size: 12px;
+        }
+        .basics-value {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .chip {
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 16px;
+            padding: 6px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .about-content {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Matrimony</div>
+        <div class="help-text">Need help? Call 8144-99-99-44</div>
+    </header>
+    <nav class="main-menu">
+        <ul class="menu-list">
+            <li class="menu-item selected" data-link="home.html">Home</li>
+            <li class="menu-item" data-link="matches.html">Matches</li>
+            <li class="menu-item" data-link="search.html">Search</li>
+            <li class="menu-item" data-link="inbox.html">Inbox</li>
+        </ul>
+        <div class="submenu-bar">
+            <ul class="submenu-list">
+                <li class="submenu-item" data-link="home.html">Dashboard</li>
+                <li class="submenu-item selected" data-link="my_profile.html">My profile</li>
+                <li class="submenu-item" data-link="partner_preferences.html">Partner Preferences</li>
+                <li class="submenu-item" data-link="settings.html">Settings</li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+    <div class="main-content">
+        <div class="profile-row">
+            <div class="profile-photo">
+                <img src="assets/images/person.png" alt="Profile Photo">
+            </div>
+            <div class="profile-details">
+                <div class="profile-details-list">
+                    <div class="profile-details-item">
+                        <span class="profile-details-label">Age / Height:</span>
+                        <span class="profile-details-value">25 / 5'0 (152cm)</span>
+                    </div>
+                    <div class="profile-details-item">
+                        <span class="profile-details-label">Marital Status:</span>
+                        <span class="profile-details-value">Never Married</span>
+                    </div>
+                    <div class="profile-details-item">
+                        <span class="profile-details-label">Posted by:</span>
+                        <span class="profile-details-value">Sibling</span>
+                    </div>
+                    <div class="profile-details-item">
+                        <span class="profile-details-label">Religion / Community:</span>
+                        <span class="profile-details-value">Hindu, Vishwakarma</span>
+                    </div>
+                    <div class="profile-details-item">
+                        <span class="profile-details-label">Location:</span>
+                        <span class="profile-details-value">Chengannur, Kerala</span>
+                    </div>
+                    <div class="profile-details-item">
+                        <span class="profile-details-label">Mother tongue:</span>
+                        <span class="profile-details-value">Malayalam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">
+                About Me
+                <span class="edit-icon" title="Edit">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 2.29a1 1 0 0 1 1.42 0l1.59 1.59a1 1 0 0 1 0 1.42l-9.3 9.3-3.3.71a1 1 0 0 1-1.18-1.18l.71-3.3 9.3-9.3zM3 17a1 1 0 0 0 1 1h12a1 1 0 1 0 0-2H4a1 1 0 0 0-1 1z" fill="currentColor"/></svg>
+                </span>
+            </div>
+            <div class="about-content">
+                Hi there, here is a quick introduction about myself. I am currently living in India. With hard work and determination in achieving my goals, I have built a successful career. I am looking for a girl who will become a part of our family.
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">
+                Basics &amp; Lifestyle
+                <span class="edit-icon" title="Edit">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 2.29a1 1 0 0 1 1.42 0l1.59 1.59a1 1 0 0 1 0 1.42l-9.3 9.3-3.3.71a1 1 0 0 1-1.18-1.18l.71-3.3 9.3-9.3zM3 17a1 1 0 0 0 1 1h12a1 1 0 1 0 0-2H4a1 1 0 0 0-1 1z" fill="currentColor"/></svg>
+                </span>
+            </div>
+            <div class="basics-list">
+                <div class="basics-item">
+                    <div class="basics-label">Age</div>
+                    <div class="basics-value">25</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Date of Birth</div>
+                    <div class="basics-value">20-Jun-2000</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Marital Status</div>
+                    <div class="basics-value">Never Married</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Height</div>
+                    <div class="basics-value">5'0 (152cm)</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Grew up in</div>
+                    <div class="basics-value">India</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">
+                Religious Background 
+                <span class="edit-icon" title="Edit">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 2.29a1 1 0 0 1 1.42 0l1.59 1.59a1 1 0 0 1 0 1.42l-9.3 9.3-3.3.71a1 1 0 0 1-1.18-1.18l.71-3.3 9.3-9.3zM3 17a1 1 0 0 0 1 1h12a1 1 0 1 0 0-2H4a1 1 0 0 0-1 1z" fill="currentColor"/></svg>
+                </span>
+            </div>
+            <div class="basics-list">
+                <div class="basics-item">
+                    <div class="basics-label">Religion</div>
+                    <div class="basics-value">Hindu</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Community</div>
+                    <div class="basics-value">Vishwakarma</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Sub community</div>
+                    <div class="basics-value">Not specified</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Mother Toung</div>
+                    <div class="basics-value">Malayalam</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">
+                Astro Details
+                <span class="edit-icon" title="Edit">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 2.29a1 1 0 0 1 1.42 0l1.59 1.59a1 1 0 0 1 0 1.42l-9.3 9.3-3.3.71a1 1 0 0 1-1.18-1.18l.71-3.3 9.3-9.3zM3 17a1 1 0 0 0 1 1h12a1 1 0 1 0 0-2H4a1 1 0 0 0-1 1z" fill="currentColor"/></svg>
+                </span>
+            </div>
+            <div class="basics-list">
+                <div class="basics-item">
+                    <div class="basics-label">Chovva dosham</div>
+                    <div class="basics-value">Don't know</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Date of birth</div>
+                    <div class="basics-value">20-june-2000</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Time of birth</div>
+                    <div class="basics-value">Not specified</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">City of birth</div>
+                    <div class="basics-value">Not specified</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">
+                Family Details
+                <span class="edit-icon" title="Edit">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 2.29a1 1 0 0 1 1.42 0l1.59 1.59a1 1 0 0 1 0 1.42l-9.3 9.3-3.3.71a1 1 0 0 1-1.18-1.18l.71-3.3 9.3-9.3zM3 17a1 1 0 0 0 1 1h12a1 1 0 1 0 0-2H4a1 1 0 0 0-1 1z" fill="currentColor"/></svg>
+                </span>
+            </div>
+            <div class="basics-list">
+                <div class="basics-item">
+                    <div class="basics-label">Mother's Details</div>
+                    <div class="basics-value">Homemaker</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Father's details</div>
+                    <div class="basics-value">Employed</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Family location</div>
+                    <div class="basics-value">Chengannur, Kerala, India</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">No of Sisters</div>
+                    <div class="basics-value">None</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">No of Brothers</div>
+                    <div class="basics-value">2</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Family Financial Status</div>
+                    <div class="basics-value">Middle</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">
+                Education & Career
+                <span class="edit-icon" title="Edit">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 2.29a1 1 0 0 1 1.42 0l1.59 1.59a1 1 0 0 1 0 1.42l-9.3 9.3-3.3.71a1 1 0 0 1-1.18-1.18l.71-3.3 9.3-9.3zM3 17a1 1 0 0 0 1 1h12a1 1 0 1 0 0-2H4a1 1 0 0 0-1 1z" fill="currentColor"/></svg>
+                </span>
+            </div>
+            <div class="basics-list">
+                <div class="basics-item">
+                    <div class="basics-label">Highest Qualification</div>
+                    <div class="basics-value">BS.c Science</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">College</div>
+                    <div class="basics-value">Mar Thoma College, Kuttipuram, Thiruvalla</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Annual Income</div>
+                    <div class="basics-value">INR 4 - 7 Lakh</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Working with</div>
+                    <div class="basics-value">Private Company</div>
+                </div>
+                <div class="basics-item">
+                    <div class="basics-label">Working as</div>
+                    <div class="basics-value">Software Developer</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">
+                Hobbies and Interests
+                <span class="edit-icon" title="Edit">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 2.29a1 1 0 0 1 1.42 0l1.59 1.59a1 1 0 0 1 0 1.42l-9.3 9.3-3.3.71a1 1 0 0 1-1.18-1.18l.71-3.3 9.3-9.3zM3 17a1 1 0 0 0 1 1h12a1 1 0 1 0 0-2H4a1 1 0 0 0-1 1z" fill="currentColor"/></svg>
+                </span>
+            </div>
+            <div class="chips">
+                <span class="chip">Dancing</span>
+                <span class="chip">Movies</span>
+                <span class="chip">Running</span>
+                <span class="chip">Foodie</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                window.location.href = this.getAttribute('data-link');
+            });
+        });
+        document.querySelectorAll('.submenu-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                window.location.href = this.getAttribute('data-link');
+            });
+        });
+    </script>
+</body>
+
+</html>

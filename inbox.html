@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimony Home</title>
+    <link rel="stylesheet" href="styles/account.header.css">
+    <style>
+        .main-content {
+            max-width: 900px;
+            margin: 40px auto 20px auto;
+            padding: 0;
+        }
+
+        .welcome {
+            font-size: 2rem;
+            color: #1d3557;
+            margin-top: 40px;
+            font-weight: 600;
+        }
+
+        .partner-list {
+            width: 80%;
+            max-width: 900px;
+            margin-top: 20px;
+        }
+
+        .partner-card {
+            display: flex;
+            gap: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: #fff;
+            align-items: center;
+        }
+
+        /* Column 1 */
+        .partner-image img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .partner-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Column 2 */
+        .partner-details {
+            flex: 1;
+        }
+
+        .partner-details h3 {
+            margin: 0 0 5px;
+            color: #1d3557;
+        }
+
+        .partner-details p {
+            margin: 2px 0;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .online {
+            color: green;
+            font-weight: 500;
+        }
+
+        /* Column 3 */
+        .partner-action {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .action-btn {
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 120px;
+        }
+
+        .accept-btn {
+            background: lightseagreen;
+        }
+
+        .accept-btn:hover {
+            background: rgb(13, 110, 106);
+        }
+
+        .reject-btn {
+            background: #e63946;
+        }
+
+        .reject-btn:hover {
+            background: #d62828;
+        }
+
+        .contact-btn {
+            background: orange;
+        }
+
+        .contact-btn:hover {
+            background: rgb(199, 133, 10);
+        }
+
+        .connect-btn {
+            background: orangered;
+        }
+
+        .connect-btn:hover {
+            background: rgb(196, 60, 11);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 30px;
+            margin-top: 8px;
+        }
+
+        .partner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        /* Name + ID */
+        .name-id {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .name-id h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #1d3557;
+        }
+
+        .mat-id {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* Online status */
+        .meta-right {
+            font-size: 13px;
+            color: #2a9d8f;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Green dot */
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .meta-left {
+            grid-area: left;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .meta-right {
+            grid-area: right;
+            font-size: 13px;
+            color: green;
+            text-align: right;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .tab {
+            padding: 10px 18px;
+            border: none;
+            background: #f1f5f9;
+            color: #333;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        /* Active tab */
+        .tab.active {
+            background: #1d3557;
+            color: #fff;
+        }
+
+        /* Hover */
+        .tab:hover {
+            background: #457b9d;
+            color: white;
+        }
+
+        .profile-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .profile-link h3 {
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .profile-link h3:hover {
+            color: #e63946;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Matrimony</div>
+        <div class="help-text">Need help? Call 8144-99-99-44</div>
+    </header>
+    <nav class="main-menu">
+        <ul class="menu-list">
+            <li class="menu-item" data-link="home.html">Home</li>
+            <li class="menu-item" data-link="matches.html">Matches</li>
+            <li class="menu-item" data-link="search.html">Search</li>
+            <li class="menu-item selected" data-link="inbox.html">Inbox</li>
+        </ul>
+    </nav>
+    </header>
+    <div class="main-content">
+        <div class="tabs">
+            <button class="tab active" id="receivedBtn">Received</button>
+            <button class="tab" id="myRequestBtn">My Request</button>
+            <button class="tab" id="acceptedBtn">Accepted</button>
+            <button class="tab" id="rejectedBtn">Rejected</button>
+        </div>
+        <!-- Received To Me -->
+        <div class="partner-list" id="receivedToMe">
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn accept-btn">Accept</button>
+                    <button class="action-btn reject-btn">Reject</button>
+                </div>
+
+            </div>
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn accept-btn">Accept</button>
+                    <button class="action-btn reject-btn">Reject</button>
+                </div>
+
+            </div>
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn accept-btn">Accept</button>
+                    <button class="action-btn reject-btn">Reject</button>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- My Request -->
+        <div class="partner-list" id="myRequest" style="display: none;">
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn reject-btn">Cancel</button>
+                </div>
+
+            </div>
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn reject-btn">Cancel</button>
+                </div>
+
+            </div>
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn reject-btn">Cancel</button>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Accepted -->
+        <div class="partner-list" id="accepted" style="display: none;">
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn contact-btn">Contact Now</button>
+                </div>
+
+            </div>
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn contact-btn">Contact Now</button>
+                </div>
+
+            </div>
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn contact-btn">Contact Now</button>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Rejected -->
+        <div class="partner-list" id="rejected" style="display: none;">
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn connect-btn">Connect Now</button>
+                </div>
+
+            </div>
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn connect-btn">Connect Now</button>
+                </div>
+
+            </div>
+
+            <div class="partner-card">
+
+                <!-- Column 1: Image -->
+                <div class="partner-image">
+                    <a href="partner_profile.html" target="_blank">
+                        <img src="assets/images/person.png" alt="profile">
+                    </a>
+                </div>
+
+
+                <!-- Column 2: Details -->
+                <div class="partner-details">
+                    <!-- Header -->
+                    <div class="partner-header">
+
+                        <div class="name-id">
+                            <a href="partner_profile.html" target="_blank" class="profile-link">
+                                <h3>Arjun Nair</h3>
+                            </a>
+                            <span class="mat-id">ID: MAT12345</span>
+                        </div>
+
+                        <div class="meta-right">
+                            <span class="online-dot"></span>
+                            Online 1 hr ago
+                        </div>
+
+                    </div>
+
+                    <div class="details-grid">
+
+                        <!-- Left column -->
+                        <div>
+                            <p>29 yrs, 5'8"</p>
+                            <p>Hindu, Nair</p>
+                            <p>Malayalam</p>
+                        </div>
+
+                        <!-- Right column -->
+                        <div>
+                            <p>Unmarried</p>
+                            <p>Kollam, Kerala</p>
+                            <p>B.Tech, Software Engineer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Action -->
+                <div class="partner-action">
+                    <button class="action-btn connect-btn">Connect Now</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                window.location.href = this.getAttribute('data-link');
+            });
+        });
+        document.querySelectorAll('.tab').forEach(btn => {
+            btn.addEventListener('click', function () {
+
+                // remove active from all
+                document.querySelectorAll('.tab').forEach(b => {
+                    b.classList.remove('active');
+                });
+
+                // add to clicked
+                this.classList.add('active');
+            });
+        });
+        document.getElementById('receivedBtn').addEventListener('click', () => {
+            document.getElementById('receivedToMe').style.display = 'block';
+            document.getElementById('myRequest').style.display = 'none';
+            document.getElementById('accepted').style.display = 'none';
+            document.getElementById('rejected').style.display = 'none';
+        });
+        document.getElementById('myRequestBtn').addEventListener('click', () => {
+            document.getElementById('receivedToMe').style.display = 'none';
+            document.getElementById('myRequest').style.display = 'block';
+            document.getElementById('accepted').style.display = 'none';
+            document.getElementById('rejected').style.display = 'none';
+        });
+        document.getElementById('acceptedBtn').addEventListener('click', () => {
+            document.getElementById('receivedToMe').style.display = 'none';
+            document.getElementById('myRequest').style.display = 'none';
+            document.getElementById('accepted').style.display = 'block';
+            document.getElementById('rejected').style.display = 'none';
+        });
+        document.getElementById('rejectedBtn').addEventListener('click', () => {
+            document.getElementById('receivedToMe').style.display = 'none';
+            document.getElementById('myRequest').style.display = 'none';
+            document.getElementById('accepted').style.display = 'none';
+            document.getElementById('rejected').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

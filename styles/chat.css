@@ -1,0 +1,177 @@
+/* Floating Button */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Window Layout */
+.chat-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    height: 450px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.hidden { display: none !important; }
+
+.chat-header {
+    background: #e63946;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* User List Styling */
+.user-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: auto;
+}
+
+/* Message Bubbles */
+.message-container {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 46vh;
+}
+
+.msg {
+    max-width: 80%;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 15px;
+}
+
+.receiver {
+    align-self: flex-start;
+    background: #f1f1f1;
+    color: #e63946;
+}
+
+.sender {
+    align-self: flex-end;
+    background: #e63946;
+    color: white;
+}
+
+.input-area {
+    padding: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-self: flex-end;
+}
+
+#send-btn {
+    margin-left: 10px;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    width: 40px;  /* Equal width and height for a circle */
+    height: 40px;
+    border-radius: 50%; /* Makes it a perfect circle */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+    padding: 0; /* Remove default padding to center the SVG */
+}
+
+#send-btn:hover {
+    background-color: #e63946;
+    transform: scale(1.05);
+}
+
+#send-btn svg {
+    /* Slight rotation or offset to make the "paper plane" look better */
+    transform: translateX(-1px) translateY(1px);
+}
+
+.chat-header button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.chat-header button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure the title stays centered even when the back button appears */
+#header-title {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Specific adjustment for the back button so it doesn't push the title off-center */
+#back-btn {
+    position: absolute;
+    left: 10px;
+    z-index: 2;
+}
+
+.chat-header {
+    position: relative; /* Necessary for the absolute back button positioning */
+    background-color: #e63946;
+    color: white;
+    padding: 10px 13px;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+}
+
+#close-btn {
+    position: absolute;
+    right: 10px;
+}
+
+input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 5px 15px; }
+

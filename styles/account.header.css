@@ -1,0 +1,261 @@
+.main-menu {
+    background: #e63946;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    min-height: 56px;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 16px 22px;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+    background: transparent;
+}
+
+.menu-item.selected,
+.menu-item:focus,
+.menu-item:hover {
+    background: #1d3557;
+    color: #fff;
+}
+
+.submenu-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f1faee;
+    width: 100vw;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.submenu-list {
+    list-style: none;
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.submenu-item {
+    color: #1d3557;
+    padding: 12px 28px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 0;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.submenu-item.selected,
+.submenu-item:focus,
+.submenu-item:hover {
+    background: #e63946;
+    color: #fff;
+    border-bottom: 2px solid #e63946;
+}
+
+@media (max-width: 700px) {
+    .menu-list {
+        gap: 10px;
+    }
+
+    .menu-item {
+        padding: 12px 10px;
+        font-size: 1rem;
+    }
+
+    .submenu-item {
+        padding: 10px 10px;
+        font-size: 0.98rem;
+    }
+}
+
+.main-menu {
+    background: #e63946;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    min-height: 56px;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 16px 22px;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+}
+
+.menu-item.selected,
+.menu-item:focus,
+.menu-item:hover {
+    background: #1d3557;
+    color: #fff;
+}
+
+.has-submenu .submenu {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    background: #fff;
+    min-width: 180px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 0 0 12px 12px;
+    z-index: 10;
+    padding: 0;
+}
+
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu {
+    display: block;
+}
+
+.submenu-item {
+    color: #1d3557;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-bottom: 1px solid #f1faee;
+    transition: background 0.2s, color 0.2s;
+}
+
+.submenu-item:last-child {
+    border-bottom: none;
+}
+
+.submenu-item:hover,
+.submenu-item.selected {
+    background: none;
+    color: #e63946;
+}
+
+.menu-item[data-link]:hover,
+.menu-item[data-link].selected {
+    background: #1d3557;
+    color: #fff;
+}
+
+@media (max-width: 700px) {
+    .menu-list {
+        gap: 10px;
+    }
+
+    .menu-item {
+        padding: 12px 10px;
+        font-size: 1rem;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e63946;
+    letter-spacing: 2px;
+}
+
+.help-text {
+    margin-left: auto;
+    color: #1d3557;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Profile container */
+.profile-menu {
+    position: relative;
+    margin-left: 20px;
+}
+
+/* Profile image */
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #eee;
+}
+
+/* Dropdown */
+.dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 180px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    display: none;
+    overflow: hidden;
+    z-index: 100;
+}
+
+/* Dropdown items */
+.dropdown-item {
+    padding: 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background: #f1f5f9;
+}
+
+/* Logout special */
+.logout {
+    color: #e63946;
+    font-weight: 600;
+}

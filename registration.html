@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Matrimony</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px 40px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e63946;
+            letter-spacing: 2px;
+        }
+
+        .center-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 50px 0px 50px 0px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+            padding: 36px 32px 32px 32px;
+            min-width: 320px;
+            max-width: 95vw;
+            width: 370px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(.4, 2, .6, 1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .profile-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .profile-option {
+            background: #f1faee;
+            color: #1d3557;
+            border: 1px solid #e63946;
+            border-radius: 22px;
+            padding: 10px 18px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .profile-option.selected,
+        .profile-option:hover {
+            background: #e63946;
+            color: #fff;
+        }
+
+        .continue-btn,
+        .back-btn {
+            background: #e63946;
+            color: #fff;
+            border: none;
+            border-radius: 22px;
+            padding: 10px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 18px;
+        }
+
+        .continue-btn:hover,
+        .back-btn:hover {
+            background: #1d3557;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            padding: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: #e63946;
+            border: none;
+            box-shadow: none;
+            z-index: 2;
+        }
+
+        .back-btn svg {
+            width: 28px;
+            height: 28px;
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #1d3557;
+            font-weight: 500;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 10px 0px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        /* Style select to match input */
+        .form-group select {
+            width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            padding: 10px 36px 10px 8px;
+            /* right padding for arrow */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #fff url('data:image/svg+xml;utf8,<svg fill="%231d3557" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center/20px 20px;
+            color: #1d3557;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            transition: border 0.2s;
+        }
+
+        .form-group select:focus {
+            border-color: #e63946;
+            outline: none;
+        }
+
+        .help-text {
+            margin-left: auto;
+            color: #1d3557;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 600px) {
+            .help-text {
+                font-size: 0.98rem;
+                padding-left: 0;
+                text-align: right;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 18px 4px;
+                min-width: 0;
+                width: 98vw;
+            }
+        }
+
+        .aadhaar-card-preview {
+            position: relative;
+        }
+
+        .aadhaar-img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+        }
+
+        #aadhaarNumber {
+            position: absolute;
+            bottom: 10px;
+            left: 65%;
+            transform: translateX(-50%);
+            width: 60%;
+            padding: 10px;
+            border: 2px solid #e63946;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        #aadhaarOtp {
+            letter-spacing: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Matrimony</div>
+        <div class="help-text">Need help? Call 8144-99-99-44</div>
+    </header>
+    <div class="center-container">
+        <div class="card" id="step1">
+            <div class="card-title">This profile is for</div>
+            <div class="profile-options" id="profileOptions">
+                <div class="profile-option" data-value="Myself">My self</div>
+                <div class="profile-option" data-value="Son">My son</div>
+                <div class="profile-option" data-value="Daughter">My daughter</div>
+                <div class="profile-option" data-value="Brother">My brother</div>
+                <div class="profile-option" data-value="Sister">My sister</div>
+                <div class="profile-option" data-value="Friend">My friend</div>
+                <div class="profile-option" data-value="Relative">My relative</div>
+            </div>
+            <button class="continue-btn" id="continueBtn1" disabled>Continue</button>
+        </div>
+        <div class="card" id="step2" style="display:none;">
+            <button class="back-btn" id="backBtn2" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">Basic Details</div>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Mobile Number</label>
+                <input type="text" id="mobileNumber" name="mobileNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Email ID</label>
+                <input type="text" id="emailID" name="emailID" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <button class="continue-btn" id="continueBtn2">Continue</button>
+        </div>
+        <!-- Registration Step 3: Location -->
+        <div class="card" id="step3" style="display:none;">
+            <button class="back-btn" id="backBtn3" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">Location</div>
+            <div class="form-group">
+                <label for="country">Select Country</label>
+                <select id="country" name="country">
+                    <option>India</option>
+                    <option>USA</option>
+                    <option>UK</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="state">Select State</label>
+                <select id="state" name="state">
+                    <option>Kerala</option>
+                    <option>Tamil Nadu</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">Select City</label>
+                <select id="city" name="city">
+                    <option>Ernakulam</option>
+                    <option>Thiruvananthapuram</option>
+                </select>
+            </div>
+            <button class="continue-btn" id="continueBtn3">Continue</button>
+        </div>
+
+        <!-- Registration Step 4: Professional details -->
+        <div class="card" id="step4" style="display:none;">
+            <button class="back-btn" id="backBtn4" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">Professional Details</div>
+            <div class="form-group">
+                <label for="qualification">Select Highest Qualification</label>
+                <select id="qualification" name="qualification">
+                    <option>B.Sc- Bachelor of science in IT/Computer Science</option>
+                    <option>B.Sc- Physics</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="college">Select College Name</label>
+                <select id="college" name="college">
+                    <option>Mar Thoma College, Thiruvalla</option>
+                    <option>Christian College, Chengannur</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="employment">Select Employment Type</label>
+                <select id="employment" name="employment">
+                    <option>Private</option>
+                    <option>Public</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="income">Select Income</label>
+                <select id="income" name="income">
+                    <option>1-2 Laks</option>
+                    <option>2-4 Laks</option>
+                </select>
+            </div>
+            <button class="continue-btn" id="continueBtn4">Continue</button>
+        </div>
+
+        <!-- Registration Step 5: Cast and Religion -->
+        <div class="card" id="step5" style="display:none;">
+            <button class="back-btn" id="backBtn5" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">About Cast and Religion</div>
+            <div class="form-group">
+                <label for="religion">Select Religion</label>
+                <select id="religion" name="religion">
+                    <option>Hindu</option>
+                    <option>Christian</option>
+                    <option>Muslim</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cast">Select Cast</label>
+                <select id="cast" name="cast">
+                    <option>Nair</option>
+                    <option>Vishvakarma</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subcast">Select Subcast</label>
+                <select id="subcast" name="subcast">
+                    <option>Chettiyar</option>
+                    <option>Carpenter</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Do you have shudha jathakam? (optional)</label>
+                <div>
+                    <label><input type="radio" name="shudhaJathakam" value="Yes"> Yes</label>
+                    <label><input type="radio" name="shudhaJathakam" value="No"> No</label>
+                    <label><input type="radio" name="shudhaJathakam" value="DontKnow"> Don't know</label>
+                </div>
+            </div>
+            <button class="continue-btn" id="continueBtn5">Continue</button>
+        </div>
+
+        <!-- Registration Step 6: Phone number verification -->
+        <div class="card" id="step6" style="display:none;">
+            <button class="back-btn" id="backBtn6" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">Phone Number Verification</div>
+            <div class="form-group">
+                <label for="otp">Please enter the 4-digit code sent to +918767878</label>
+                <input type="text" id="otp" maxlength="4" name="otp">
+            </div>
+            <div class="form-group">
+                <span>Didn't receive the OTP? <a href="#" id="resendOtp">Resend OTP</a> <span
+                        id="otpStatus">(2sec)</span></span>
+            </div>
+            <div class="form-group">
+                <a href="#">Verify with missed call</a>
+            </div>
+            <button class="continue-btn" id="continueBtn6">Continue</button>
+        </div>
+
+        <!-- Registration Step 7: Aadhaar Verification -->
+        <div class="card" id="step7" style="display:none;">
+            <button class="back-btn" id="backBtn7" title="Back">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+
+            <div class="card-title">Aadhaar Verification</div>
+
+            <div class="aadhaar-card-preview">
+                <img src="assets/images/aadhaar.png" class="aadhaar-img">
+
+                <input type="text" id="aadhaarNumber" maxlength="12" placeholder="Enter Aadhaar Number">
+            </div>
+
+            <button class="continue-btn" id="sendAadhaarOtpBtn">Send OTP</button>
+
+            <div id="aadhaarOtpSection" style="display:none;margin-top:20px;">
+                <div class="form-group">
+                    <label>Enter OTP sent to Aadhaar linked mobile</label>
+                    <input type="text" id="aadhaarOtp" maxlength="6">
+                </div>
+
+                <button class="continue-btn" id="verifyAadhaarBtn">Verify Aadhaar</button>
+            </div>
+
+            <div id="aadhaarSuccess" style="display:none;margin-top:20px;text-align:center;">
+                <div style="font-size:45px;color:green;">✔</div>
+                <div style="font-weight:600;color:green;">
+                    Aadhaar Verified Successfully
+                </div>
+            </div>
+
+            <button class="continue-btn" id="continueBtn7" style="display:none;margin-top:20px;">
+                Continue
+            </button>
+        </div>
+
+        <!-- Registration Step 7: Upload profile photo -->
+        <div class="card" id="step8" style="display:none;">
+            <button class="back-btn" id="backBtn8" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">Upload Profile Photo</div>
+            <div class="form-group">
+                <label for="profilePhoto">Upload from device</label>
+                <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label>Photo guidelines</label>
+                <ul>
+                    <li>Clear face, no sunglasses</li>
+                    <li>Recent photo</li>
+                    <li>Good lighting</li>
+                </ul>
+            </div>
+            <button class="continue-btn" id="continueBtn8">Continue</button>
+        </div>
+
+        <!-- Registration Step 8: Marital status (optional) -->
+        <div class="card" id="step9" style="display:none;">
+            <button class="back-btn" id="backBtn9" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">More About You (Optional)</div>
+            <div class="form-group">
+                <label for="maritalStatus">Select Marital Status</label>
+                <select id="maritalStatus" name="maritalStatus">
+                    <option>Single</option>
+                    <option>Divorced</option>
+                    <option>Widowed</option>
+                    <option>Separated</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="height">Select Height</label>
+                <select id="height" name="height">
+                    <option>5'8'</option>
+                    <option>6'1'</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="diet">Select Diet</label>
+                <select id="diet" name="diet">
+                    <option>Vegetarian</option>
+                    <option>Non-Vegetarian</option>
+                    <option>Eggetarian</option>
+                    <option>Vegan</option>
+                </select>
+            </div>
+            <button class="continue-btn" id="continueBtn9">Continue</button>
+            <button class="continue-btn" id="skipBtn9"
+                style="background:#ccc;color:#333;margin-left:10px;">Skip</button>
+        </div>
+
+        <!-- Registration Step 9: Hobbies and Interest (optional) -->
+        <div class="card" id="step10" style="display:none;">
+            <button class="back-btn" id="backBtn10" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">Hobbies and Interest (Optional)</div>
+            <div class="form-group">
+                <label>Creative</label>
+                <label><input type="checkbox" name="hobbiesCreative" value="Writing"> Writing</label>
+                <label><input type="checkbox" name="hobbiesCreative" value="Cooking"> Cooking</label>
+            </div>
+            <div class="form-group">
+                <label>Fun</label>
+                <label><input type="checkbox" name="hobbiesFun" value="Movies"> Movies</label>
+                <label><input type="checkbox" name="hobbiesFun" value="Music"> Music</label>
+            </div>
+            <div class="form-group">
+                <label>Fitness</label>
+                <label><input type="checkbox" name="hobbiesFitness" value="Running"> Running</label>
+                <label><input type="checkbox" name="hobbiesFitness" value="Cycling"> Cycling</label>
+            </div>
+            <button class="continue-btn" id="continueBtn10">Continue</button>
+            <button class="continue-btn" id="skipBtn10"
+                style="background:#ccc;color:#333;margin-left:10px;">Skip</button>
+        </div>
+
+        <!-- Registration Step 10: Family details (optional) -->
+        <div class="card" id="step11" style="display:none;">
+            <button class="back-btn" id="backBtn11" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">Add Family Details (Optional)</div>
+            <div class="form-group">
+                <label for="motherDetails">Mother Details</label>
+                <select id="motherDetails" name="motherDetails">
+                    <option>Homemaker</option>
+                    <option>Employed</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fatherDetails">Father Details</label>
+                <select id="fatherDetails" name="fatherDetails">
+                    <option>Employed</option>
+                    <option>Homemaker</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="numSisters">No. of Sisters</label>
+                <input type="number" id="numSisters" name="numSisters" min="0">
+            </div>
+            <div class="form-group">
+                <label for="numBrothers">No. of Brothers</label>
+                <input type="number" id="numBrothers" name="numBrothers" min="0">
+            </div>
+            <button class="continue-btn" id="continueBtn11">Continue</button>
+            <button class="continue-btn" id="skipBtn11"
+                style="background:#ccc;color:#333;margin-left:10px;">Skip</button>
+        </div>
+
+        <!-- Registration Step 11: Family financial status (optional) -->
+        <div class="card" id="step12" style="display:none;">
+            <button class="back-btn" id="backBtn12" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">Family Financial Status (Optional)</div>
+            <div class="form-group">
+                <label for="financialStatus">Select Status</label>
+                <select id="financialStatus" name="financialStatus">
+                    <option>Elite</option>
+                    <option>High</option>
+                    <option>Middle</option>
+                </select>
+            </div>
+            <button class="continue-btn" id="continueBtn12">Continue</button>
+            <button class="continue-btn" id="skipBtn12"
+                style="background:#ccc;color:#333;margin-left:10px;">Skip</button>
+        </div>
+
+        <!-- Registration Step 12: About yourself (optional) -->
+        <div class="card" id="step13" style="display:none;">
+            <button class="back-btn" id="backBtn13" title="Back">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#e63946" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="card-title">About Yourself (Optional)</div>
+            <div class="form-group">
+                <label for="aboutYourself">Tell us about yourself (min 50 characters)</label>
+                <textarea id="aboutYourself" name="aboutYourself" rows="5" minlength="50"
+                    style="width:100%;border-radius:8px;"></textarea>
+            </div>
+            <button class="continue-btn" id="submitBtn13">Submit</button>
+            <button class="continue-btn" id="skipBtn13"
+                style="background:#ccc;color:#333;margin-left:10px;">Skip</button>
+        </div>
+    </div>
+    <script>
+        // Step 1: Profile options
+        const options = document.querySelectorAll('.profile-option');
+        const continueBtn1 = document.getElementById('continueBtn1');
+        let selectedOption = null;
+        options.forEach(opt => {
+            opt.addEventListener('click', () => {
+                options.forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+                selectedOption = opt.getAttribute('data-value');
+                continueBtn1.disabled = false;
+            });
+        });
+        continueBtn1.addEventListener('click', () => {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        });
+        // Step 2: Back button
+        document.getElementById('backBtn2').addEventListener('click', () => {
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step1').style.display = 'block';
+        });
+        document.getElementById('continueBtn2').addEventListener('click', () => {
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'block';
+        });
+        // Step 3: Location
+        document.getElementById('backBtn3').addEventListener('click', () => {
+            document.getElementById('step3').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        });
+        document.getElementById('continueBtn3').addEventListener('click', () => {
+            document.getElementById('step3').style.display = 'none';
+            document.getElementById('step4').style.display = 'block';
+        });
+        // Step 4: Professional details
+        document.getElementById('backBtn4').addEventListener('click', () => {
+            document.getElementById('step4').style.display = 'none';
+            document.getElementById('step3').style.display = 'block';
+        });
+        document.getElementById('continueBtn4').addEventListener('click', () => {
+            document.getElementById('step4').style.display = 'none';
+            document.getElementById('step5').style.display = 'block';
+        });
+        // Step 5: Cast and Religion
+        document.getElementById('backBtn5').addEventListener('click', () => {
+            document.getElementById('step5').style.display = 'none';
+            document.getElementById('step4').style.display = 'block';
+        });
+        document.getElementById('continueBtn5').addEventListener('click', () => {
+            document.getElementById('step5').style.display = 'none';
+            document.getElementById('step6').style.display = 'block';
+        });
+        // Step 6: Phone verification
+        document.getElementById('backBtn6').addEventListener('click', () => {
+            document.getElementById('step6').style.display = 'none';
+            document.getElementById('step5').style.display = 'block';
+        });
+        document.getElementById('continueBtn6').addEventListener('click', () => {
+            document.getElementById('step6').style.display = 'none';
+            document.getElementById('step7').style.display = 'block';
+        });
+        // Step 7: Aadhaar Verification
+        document.getElementById('backBtn7').addEventListener('click', () => {
+            document.getElementById('step7').style.display = 'none';
+            document.getElementById('step6').style.display = 'block';
+        });
+        document.getElementById('continueBtn7').addEventListener('click', () => {
+            document.getElementById('step7').style.display = 'none';
+            document.getElementById('step8').style.display = 'block';
+        });
+        // Step 8: Upload photo
+        document.getElementById('backBtn8').addEventListener('click', () => {
+            document.getElementById('step8').style.display = 'none';
+            document.getElementById('step7').style.display = 'block';
+        });
+        document.getElementById('continueBtn8').addEventListener('click', () => {
+            document.getElementById('step8').style.display = 'none';
+            document.getElementById('step9').style.display = 'block';
+        });
+        // Step 9: Marital status (optional)
+        document.getElementById('backBtn9').addEventListener('click', () => {
+            document.getElementById('step9').style.display = 'none';
+            document.getElementById('step8').style.display = 'block';
+        });
+        document.getElementById('continueBtn9').addEventListener('click', () => {
+            document.getElementById('step9').style.display = 'none';
+            document.getElementById('step10').style.display = 'block';
+        });
+        document.getElementById('skipBtn9').addEventListener('click', () => {
+            document.getElementById('step9').style.display = 'none';
+            document.getElementById('step10').style.display = 'block';
+        });
+        // Step 10: Hobbies (optional)
+        document.getElementById('backBtn10').addEventListener('click', () => {
+            document.getElementById('step10').style.display = 'none';
+            document.getElementById('step9').style.display = 'block';
+        });
+        document.getElementById('continueBtn10').addEventListener('click', () => {
+            document.getElementById('step10').style.display = 'none';
+            document.getElementById('step11').style.display = 'block';
+        });
+        document.getElementById('skipBtn10').addEventListener('click', () => {
+            document.getElementById('step10').style.display = 'none';
+            document.getElementById('step11').style.display = 'block';
+        });
+        // Step 11: Family details (optional)
+        document.getElementById('backBtn11').addEventListener('click', () => {
+            document.getElementById('step11').style.display = 'none';
+            document.getElementById('step10').style.display = 'block';
+        });
+        document.getElementById('continueBtn11').addEventListener('click', () => {
+            document.getElementById('step11').style.display = 'none';
+            document.getElementById('step12').style.display = 'block';
+        });
+        document.getElementById('skipBtn11').addEventListener('click', () => {
+            document.getElementById('step11').style.display = 'none';
+            document.getElementById('step12').style.display = 'block';
+        });
+        // Step 12: Family financial status (optional)
+        document.getElementById('backBtn12').addEventListener('click', () => {
+            document.getElementById('step12').style.display = 'none';
+            document.getElementById('step11').style.display = 'block';
+        });
+        document.getElementById('continueBtn12').addEventListener('click', () => {
+            document.getElementById('step12').style.display = 'none';
+            document.getElementById('step13').style.display = 'block';
+        });
+        document.getElementById('skipBtn12').addEventListener('click', () => {
+            document.getElementById('step12').style.display = 'none';
+            document.getElementById('step13').style.display = 'block';
+        });
+        // Step 13: About yourself (optional)
+        document.getElementById('backBtn13').addEventListener('click', () => {
+            document.getElementById('step13').style.display = 'none';
+            document.getElementById('step12').style.display = 'block';
+        });
+        document.getElementById('skipBtn13').addEventListener('click', () => {
+            document.getElementById('step13').style.display = 'none';
+            alert('Registration Complete!');
+            window.location.href = 'home.html';
+        });
+        document.getElementById('submitBtn13').addEventListener('click', () => {
+            // Validate min 50 chars
+            const about = document.getElementById('aboutYourself').value;
+            if (about.length < 50) {
+                alert('Please enter at least 50 characters.');
+                return;
+            }
+            document.getElementById('step12').style.display = 'none';
+            alert('Registration Complete!');
+            window.location.href = 'home.html';
+        });
+
+        // Aadhaar Send OTP
+        document.getElementById('sendAadhaarOtpBtn').addEventListener('click', () => {
+            let aadhaar = document.getElementById('aadhaarNumber').value;
+
+            if (aadhaar.length !== 12) {
+                alert("Please enter valid 12 digit Aadhaar number");
+                return;
+            }
+
+            document.getElementById('aadhaarOtpSection').style.display = 'block';
+
+        });
+
+        // Aadhaar Verify OTP
+        document.getElementById('verifyAadhaarBtn').addEventListener('click', () => {
+
+            let otp = document.getElementById('aadhaarOtp').value;
+
+            if (otp.length !== 6) {
+                alert("Please enter valid OTP");
+                return;
+            }
+
+            document.getElementById('aadhaarSuccess').style.display = 'block';
+            document.getElementById('continueBtn7').style.display = 'inline-block';
+
+        });
+    </script>
+</body>
+
+</html>

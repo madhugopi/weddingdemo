@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimony Home</title>
+    <link rel="stylesheet" href="styles/account.header.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .main-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .left-section {
+            min-width: 200px;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 180px;
+            border: 3px solid #e63946;
+            object-fit: cover;
+        }
+        .verified-status {
+            font-size: 1.05rem;
+            margin-top: 4px;
+        }
+        .section-title {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 8px;
+        }
+        .similar-profiles {
+            margin-bottom: 8px;
+        }
+        .similar-profiles .fw-bold {
+            font-size: 1rem;
+        }
+        .similar-profiles .small {
+            font-size: 0.93rem;
+        }
+        .card-header .material-icons {
+            font-size: 1.3em;
+            vertical-align: middle;
+        }
+        .card-header {
+            background: #f8f9fa;
+            font-size: 1.13rem;
+            font-weight: 600;
+            color: #1d3557;
+        }
+        .card {
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: none;
+        }
+        .card-body {
+            font-size: 1rem;
+        }
+        .badge.bg-success {
+            background: #43a047 !important;
+        }
+        .badge.bg-warning {
+            background: #ffe066 !important;
+            color: #856404 !important;
+        }
+        .btn-danger {
+            background: #e63946;
+            border: none;
+        }
+        .btn-danger:hover {
+            background: #1d3557;
+        }
+        @media (max-width: 900px) {
+            .main-content {
+                max-width: 98vw;
+            }
+        }
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 0 4px;
+            }
+            .left-section {
+                min-width: 0;
+            }
+            .btn-gradient-connect {
+                width: 100%;
+            }
+        }
+        .btn-gradient-connect {
+            background: linear-gradient(90deg, #e63946 0%, #ffb347 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            font-size: 1.08rem;
+            transition: box-shadow 0.2s, background 0.2s;
+            box-shadow: 0 2px 8px rgba(230,57,70,0.10);
+        }
+        .btn-gradient-connect:hover {
+            background: linear-gradient(90deg, #1d3557 0%, #e63946 100%);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(230,57,70,0.18);
+        }
+        .profile-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            padding: 18px 18px 12px 18px;
+            margin-bottom: 18px;
+            transition: box-shadow 0.2s;
+        }
+        .profile-section:hover {
+            box-shadow: 0 4px 16px rgba(230,57,70,0.10);
+        }
+        .section-header {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 6px;
+            letter-spacing: 0.2px;
+        }
+        .section-title {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #1d3557;
+        }
+        .section-content {
+            font-size: 1rem;
+            color: #333;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Matrimony</div>
+        <div class="help-text">Need help? Call 8144-99-99-44</div>
+    </header>
+    <nav class="main-menu">
+        <ul class="menu-list">
+            <li class="menu-item" data-link="home.html">Home</li>
+            <li class="menu-item selected" data-link="matches.html">Matches</li>
+            <li class="menu-item" data-link="search.html">Search</li>
+            <li class="menu-item" data-link="inbox.html">Inbox</li>
+        </ul>
+        <div class="submenu-bar">
+            <ul class="submenu-list">
+                <li class="submenu-item" data-link="home.html">Dashboard</li>
+                <li class="submenu-item" data-link="my_profile.html">My profile</li>
+                <li class="submenu-item" data-link="partner_preferences.html">Partner Preferences</li>
+                <li class="submenu-item" data-link="settings.html">Settings</li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+    <div class="main-content container-fluid mt-4">
+        <div class="row justify-content-center g-4">
+            <!-- Left Section -->
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="left-section p-3 bg-white rounded-3 shadow-sm mb-4">
+                    <div class="text-center mb-3">
+                        <img src="assets/images/person.png" alt="Profile Photo" class="profile-photo mb-3">
+                        <div class="verified-status text-success fw-bold"><span style="font-size:1.2em;">✔</span> Verified Profile</div>
+                    </div>
+                    <div class="section-title mt-4 mb-2">Similar Profiles</div>
+                    <div class="similar-profiles mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="assets/images/person.png" class="rounded-circle me-2" style="width:38px;height:38px;">
+                            <div>
+                                <div class="fw-bold">Anjali Menon</div>
+                                <div class="small text-muted">27 yrs, Bangalore</div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="assets/images/person.png" class="rounded-circle me-2" style="width:38px;height:38px;">
+                            <div>
+                                <div class="fw-bold">Sneha Reddy</div>
+                                <div class="small text-muted">29 yrs, Hyderabad</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-title mb-2">New Matches</div>
+                    <div class="similar-profiles">
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="assets/images/person.png" class="rounded-circle me-2" style="width:38px;height:38px;">
+                            <div>
+                                <div class="fw-bold">Divya Patel</div>
+                                <div class="small text-muted">26 yrs, Mumbai</div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="assets/images/person.png" class="rounded-circle me-2" style="width:38px;height:38px;">
+                            <div>
+                                <div class="fw-bold">Ritu Singh</div>
+                                <div class="small text-muted">30 yrs, Delhi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Section -->
+            <div class="col-12 col-md-8 col-lg-7">
+                <!-- Card 1: Profile Summary -->
+                <div class="card mb-4">
+                    <div class="card-header d-flex align-items-center gap-2">
+                        <span class="material-icons text-primary">person</span>
+                        <span class="fw-bold">Priya Sharma</span>
+                        <span class="badge bg-success ms-2">Online</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-12 col-md-7">
+                                <div class="mb-2"><span class="fw-bold text-secondary">26 yrs</span>, <span class="fw-bold text-secondary">5.0</span>, <span class="fw-bold text-secondary">Sagittarius</span></div>
+                                <div class="mb-2">Malayalam</div>
+                                <div class="mb-2">Hindu, Vishvakarma</div>
+                                <div class="mb-2">Master degree in Management</div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="mb-2">Never Married</div>
+                                <div class="mb-2">Chengannur, Kerala</div>
+                                <div class="mb-2">Software Engineer</div>
+                                <div class="mt-3">
+                                    <button class="btn btn-gradient-connect px-4 py-2 fw-bold shadow-sm">Connect Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2: Detailed Profile -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="profile-section mb-4">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-primary me-2">person</span>
+                                <span class="section-title">About</span>
+                            </div>
+                            <div class="section-content">Enthusiastic, family-oriented, and career-driven individual looking for a compatible partner.</div>
+                        </div>
+                        <div class="profile-section mb-4">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-secondary me-2">badge</span>
+                                <span class="section-title">Matrimony ID</span>
+                            </div>
+                            <div class="section-content">MAT123456</div>
+                        </div>
+                        <div class="profile-section mb-4">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-success me-2">supervisor_account</span>
+                                <span class="section-title">Profile Managed By</span>
+                            </div>
+                            <div class="section-content">Parents</div>
+                        </div>
+                        <div class="profile-section mb-4">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-warning me-2">emoji_objects</span>
+                                <span class="section-title">Hobbies & Interest</span>
+                            </div>
+                            <div class="section-content">
+                                <span class="badge bg-secondary me-1">Reading</span>
+                                <span class="badge bg-secondary me-1">Traveling</span>
+                                <span class="badge bg-secondary me-1">Music</span>
+                            </div>
+                        </div>
+                        <div class="profile-section mb-4">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-danger me-2">call</span>
+                                <span class="section-title">Contact Details</span>
+                            </div>
+                            <div class="section-content">
+                                <div><span class="me-2">📞</span>+91 98765 43210</div>
+                                <div><span class="me-2">✉</span>priyasharma@email.com</div>
+                            </div>
+                        </div>
+                        <div class="profile-section mb-4">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-info me-2">restaurant</span>
+                                <span class="section-title">Lifestyle</span>
+                            </div>
+                            <div class="section-content">Non-Vegetarian</div>
+                        </div>
+                        <div class="profile-section mb-4">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-primary me-2">account_balance</span>
+                                <span class="section-title">Background</span>
+                            </div>
+                            <div class="section-content">Hindu, Vishwakarma<br>Lives in Chengannur, Kerala, India</div>
+                        </div>
+                        <div class="profile-section mb-4">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-warning me-2">star</span>
+                                <span class="section-title">Horoscope Details</span>
+                            </div>
+                            <div class="section-content"><span class="badge bg-warning text-dark">Hidden</span></div>
+                        </div>
+                        <div class="profile-section mb-4">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-success me-2">family_restroom</span>
+                                <span class="section-title">Family Details</span>
+                            </div>
+                            <div class="section-content">Father is employed, Mother is a homemaker<br>1 Sister<br>Family Financial Status: Middle - Annual family income 10-30 lakhs<br><a href="#" class="fw-bold">Show more</a></div>
+                        </div>
+                        <div class="profile-section">
+                            <div class="section-header d-flex align-items-center mb-1">
+                                <span class="material-icons text-secondary me-2">school</span>
+                                <span class="section-title">Education & Career</span>
+                            </div>
+                            <div class="section-content">MBA - Master of Business Administration, Management, Currently not working</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3: What she is looking for -->
+                <div class="card mb-4">
+                    <div class="card-header d-flex align-items-center gap-2">
+                        <span class="material-icons text-warning">favorite</span>
+                        <span class="fw-bold">What she is looking for</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row align-items-center justify-content-center mb-3">
+                            <div class="col-4 text-center">
+                                <img src="assets/images/person.png" alt="Her" class="rounded-circle" style="width:64px;height:64px;border:3px solid #e63946;object-fit:cover;">
+                                <div class="small mt-2 text-muted">Her preference</div>
+                            </div>
+                            <div class="col-4 text-center d-flex flex-column align-items-center justify-content-center">
+                                <div class="fw-bold mb-1" style="font-size:1.1rem;">You match <span class="text-success">3/5</span> of her preference</div>
+                            </div>
+                            <div class="col-4 text-center">
+                                <img src="assets/images/person.png" alt="You" class="rounded-circle" style="width:64px;height:64px;border:3px solid #457b9d;object-fit:cover;">
+                                <div class="small mt-2 text-muted">match with you</div>
+                            </div>
+                        </div>
+                        <div class="row g-3 justify-content-center">
+                            <div class="col-12 col-md-10">
+                                <div class="row mb-2 align-items-start">
+                                    <div class="col-6">
+                                        <div class="fw-bold">Age</div>
+                                        <div style="position:relative; min-height: 1.8em;">
+                                            <span>25 to 29</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6" style="text-align: right; padding-right: 45px;">
+                                        <span class="material-icons text-success">check_circle</span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2 align-items-start">
+                                    <div class="col-6">
+                                        <div class="fw-bold">Height</div>
+                                        <div style="position:relative; min-height: 1.8em;">
+                                            <span>5'0 (152cm)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6" style="text-align: right; padding-right: 45px;">
+                                        <span class="material-icons text-success">check_circle</span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2 align-items-start">
+                                    <div class="col-6">
+                                        <div class="fw-bold">Religion/Community</div>
+                                        <div style="position:relative; min-height: 1.8em;">
+                                            <span>Hindu, Nair</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6" style="text-align: right; padding-right: 45px;">
+                                        <span class="material-icons text-success">check_circle</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                window.location.href = this.getAttribute('data-link');
+            });
+        });
+        document.querySelectorAll('.submenu-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                window.location.href = this.getAttribute('data-link');
+            });
+        });
+    </script>
+</body>
+
+</html>
